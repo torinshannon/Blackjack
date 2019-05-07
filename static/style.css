@@ -1,0 +1,125 @@
+html{
+    height: 100%;
+    margin: auto;
+    width: 90%;
+    overflow: scroll;
+}
+
+body {
+    background-image: url("casino_tile_green.jpeg");
+    background-repeat: repeat;
+    color: white;
+    font-size: large;
+    font-weight: lighter;
+    font-family: monospace;
+    text-align: center;
+}
+
+navbar{
+    width: 90%;
+}
+
+input, button{
+    color: black;
+}
+
+button{
+    font-size: medium;
+}
+
+.container {
+    height: 100%;
+    width: 80%;
+    background: rgba(0, 0, 0, 0.95);
+    border-radius: 10px;
+    box-shadow: inset 0 0 10px black, 0 0 10px black;
+    padding: 10px;
+    margin: 10px;
+    display: inline-block;
+    vertical-align: top;
+    text-align: center;
+}
+
+.container-sp-player{
+    height: 100%;
+    width: 70%;
+    background: rgba(0, 20, 0, 0.95);
+    border-radius: 10px;
+    box-shadow: inset 0 0 10px black, 0 0 10px black;
+    padding: 10px;
+    margin: 10px;
+    display: inline-block;
+    vertical-align: top;
+    text-align: center;
+
+}
+
+.container-sp-dealer{
+    height: 100%;
+    width: 70%;
+    background: rgba(20, 0, 0, 0.95);
+    border-radius: 10px;
+    box-shadow: inset 0 0 10px black, 0 0 10px black;
+    padding: 10px;
+    margin: 10px;
+    display: inline-block;
+    vertical-align: top;
+    text-align: center;
+}
+
+#board {
+    padding: 5px;
+    margin-right: auto;
+    margin-left: auto;
+    width: 1200px;
+    height: 400px;
+    text-align: center;
+    font-size: 100%;
+    border-collapse: collapse;
+}
+
+#cell {
+    width: 20%;
+    text-align: center;
+}
+
+#panel {
+    margin-left: auto;
+    margin-right: auto;
+    width: 950px;
+    height: 100px;
+}
+
+#controls {
+    width: 30%;
+    text-align: center;
+}
+
+form button {
+    padding: 5px;
+    border: none;
+    background-color: #848484;
+    width: 60px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+input.button {
+    margin-top: .25em;
+    width: 8em;
+}
+
+textarea {
+    margin: 20px;
+}
+
+.container input {
+    margin: 10px;
+    width: 100%;
+}
+
+.container label {
+    margin: 10px;
+}
+

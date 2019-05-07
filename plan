@@ -1,0 +1,19 @@
+rooms are created in populate.py for now, as are the decks for each room.
+
+HAND/ROOM/BROWSER:
+    get room browser working
+    get user hand model / reset working
+    when player clicks join, their state is changed and they are redirected
+    user is added to chosen room's model in db
+    js pulls current_user's cash and all of that room's users
+    with the room users pulled, display everyone's hands
+    if player leaves room, remove their connection to the room model
+
+STATES:
+    0 = state for not in a game?
+    1 = joined, not in bet or hit phase
+    2 = bet phase
+    3 = hit phase
+    4 = split phase?
+    loop in js that continuously pulls current_user's state
+    add state-switching to user actions and hide some things based on state, i.e. only 1 and 2 can leave table

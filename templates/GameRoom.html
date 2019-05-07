@@ -1,0 +1,96 @@
+{% extends "base.html" %}
+{% block title %}Game Room{% endblock %}
+{% block content %}
+    <h2>Game Room {{ id }}</h2>
+    <body>
+    <script src="Blackjack.js"></script>
+    <table id="board">
+        <tbody>
+        <tr>
+            <td id="cell"></td>
+            <td id="cell"></td>
+            <td id="cell">
+                <div class="dealerarea">
+                    DEALER'S CARDS:
+                    <div id="dealercards">
+                        .---. .---.
+                        </br>|///| |///|
+                        </br>|///| |///|
+                        </br>|///| |///|
+                        </br>'---' '---'
+                    </div>
+                    DEALER'S SCORE:
+                    <div id="dealerscore"></div>
+                    <br>
+                </div>
+            </td>
+            <td id="cell"></td>
+            <td id="cell"></td>
+        </tr>
+        <tr>
+            <td id="Player1">
+                <div class="p1cards">
+                    x
+                </div>
+            </td>
+            <td id="Player2">
+                <div class="p2cards">
+                    x
+                </div>
+            </td>
+            <td id="Player3">
+                <div class="p3cards">
+                    YOUR CARDS:
+                    <div id="playercards">
+                        .---. .---.
+                        </br>|///| |///|
+                        </br>|///| |///|
+                        </br>|///| |///|
+                        </br>'---' '---'
+                    </div>
+                    YOUR SCORE:<span id="playerscore"></span></br>
+                </div>
+            </td>
+            <td id="Player4">
+                <div class="p4cards">
+                    x
+                </div>
+            </td>
+            <td id="Player5">
+                <div class="p5cards">
+                    x
+                </div>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <table id="panel">
+        <tr>
+            <td id="controls">
+                <div>
+
+                    <button class="debutton" onClick="deal(1)">Bet $1</button>
+                    <button class="debutton" onClick="deal(5)">Bet $5</button>
+                    <button class="debutton" onClick="deal(10)">Bet $10</button>
+                    <button class="debutton" onClick="deal(20)">Bet $20</button>
+                    <br>
+                    <button id="htbutton" onClick="hit()">Hit</button>
+                    <button id="stbutton" onClick="stand()">Stand</button>
+                    <button id="ddbutton" onClick="doubledown()">Double Down</button>
+                    <button id="spbutton" onClick="split()">Split</button>
+
+                    </div>
+                    </td>
+                             <td id="controls">
+                                 <div id="playermoney"> Your Cash: ${{ cash }} </div>
+                                 <div id="message"></div>
+                            </td>
+                        <td id="controls">
+                        <div>
+                    </div>
+                </td>
+            </tr>
+        </table>
+
+    </body>
+{% endblock %}

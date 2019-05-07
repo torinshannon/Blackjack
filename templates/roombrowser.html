@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block title %}Room Browser{% endblock %}
+{% block content %}
+<h1>Room Browser</h1>
+
+    {% for room in rooms %}
+        <div class="container">
+                <tr>
+                    <td>
+                        Room: {{ room.id }}<br>
+                        Players: {{ room.usercount }}
+                    </td>
+                    <td>
+                        <form method="GET" action="/gameroom/{{ room.id }}">
+                            <button type="submit">Join Room</button>
+                        </form>
+                    </td>
+                </tr>
+        </div>
+    {% endfor %}
+
+{% endblock %}

@@ -1,0 +1,183 @@
+{% extends "base.html" %}
+{% block title %}Single Player Room{% endblock %}
+{% block content %}
+    <div class="container">
+        <h1>Single-Player Room</h1>
+    </div>
+    <script src="/static/Blackjack.js"></script>
+    <script src="/static/Dealer.js"></script>
+    <script src="/static/Player.js"></script>
+    <script src="/static/Card.js"></script>
+    <script src="/static/Hand.js"></script>
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="container-sp-player">
+                Your Cards:
+                <div id="player0Cards" class="cardArea">
+                    .---. .---.
+                    </br>|///| |///|
+                    </br>|///| |///|
+                    </br>|///| |///|
+                    </br>'---' '---'
+                </div>
+                Your Score:
+                <div id="player0Score">--</div>
+                </br>
+                Your Bet:
+                <div id="player0Bet">--</div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="container-sp-dealer">
+                Dealer's Cards:
+                <div id="dealercards">
+                    .---. .---.
+                    <br>|///| |///|
+                    <br>|///| |///|
+                    <br>|///| |///|
+                    <br>'---' '---'
+                </div>
+                Dealer's Score:
+                <div id="dealerscore">--</div>
+                <br>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+
+        <div class="col-sm-6">
+            <div class="container-sp-player" id="player1" style="display: none">
+                Your Cards:
+                <div id="player1Cards" class="cardArea">
+                    .---. .---.
+                    </br>|///| |///|
+                    </br>|///| |///|
+                    </br>|///| |///|
+                    </br>'---' '---'
+                </div>
+                Your Score:
+                <div id="player1Score">--</div>
+{#                </br>#}
+{#                Your Bet:#}
+{#                <div id="player1Bet">--</div>#}
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="container">
+                <button id="d2button" class="btn-success" onClick="startRound(2)">Bet $2</button>
+                <button id="d5button" class="btn-success" onClick="startRound(5)">Bet $5</button>
+                <button id="d10button" class="btn-success" onClick="startRound(10)">Bet $10</button>
+                <button id="d20button" class="btn-success" onClick="startRound(20)">Bet $20</button>
+                <button id="htbutton" class="btn-default" onClick="playerHit()">Hit</button>
+                <button id="stbutton" class="btn-default" onClick="playerStand()">Stand</button>
+                <button id="ddbutton" class="btn-default" onClick="playerDouble()">Double Down</button>
+                <button id="spbutton" class="btn-default" onClick="playerSplit()">Split</button>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="container">
+                <div id="playermoney"> Bank: ${{ cash }} </div>
+                <div id="message"></div>
+            </div>
+        </div>
+    </div>
+
+    <table id="board" style="display:none;">
+        <tbody>
+        <tr>
+            <td id="cell"></td>
+            <td id="cell"></td>
+            <td id="dealer" class="playingField">
+                <div class="container">
+                    <div class="dealerarea">
+                        DEALER'S CARDS:
+                        <div id="dealercards">
+                            .---. .---.
+                            <br>|///| |///|
+                            <br>|///| |///|
+                            <br>|///| |///|
+                            <br>'---' '---'
+                        </div>
+                        DEALER'S SCORE:
+                        <div id="dealerscore"></div>
+                        <br>
+                    </div>
+                </div>
+            </td>
+            <td id="cell"></td>
+            <td id="cell"></td>
+        </tr>
+        <tr>
+            <td id="player2" class="playingField" style="display:none;">
+                YOUR CARDS:
+                <div id="player2Cards" class="cardArea">
+                    .---. .---.</br>
+                    |///| |///|</br>
+                    |///| |///|</br>
+                    |///| |///|</br>
+                    '---' '---'
+                </div>
+                YOUR SCORE:<span id="player2Score"></span></br>
+                Your bet: <span id="player2Bet"></span><br>
+            </td>
+            <td id="player1" class="playingField" style="display:none;">
+                YOUR CARDS:
+                <div id="player1Cards" class="cardArea">
+                    .---. .---.</br>
+                    |///| |///|</br>
+                    |///| |///|</br>
+                    |///| |///|</br>
+                    '---' '---'
+                </div>
+                YOUR SCORE:<span id="player1score"></span></br>
+                Your bet: <span id="player1Bet"></span><br>
+            </td>
+            <td id="player0" class="playingField">
+                <div class="container">
+                    YOUR CARDS:
+                    <div id="player0Cards" class="cardArea">
+                        .---. .---.
+                        </br>|///| |///|
+                        </br>|///| |///|
+                        </br>|///| |///|
+                        </br>'---' '---'
+                    </div>
+                    YOUR SCORE:
+                    <div id="player0Score"></div>
+                    </br>
+                    Your bet:
+                    <div id="player0Bet"></div>
+                </div>
+            </td>
+            <td id="player3" class="playingField" style="display:none;">
+                YOUR CARDS:
+                <div id="player3Cards" class="cardArea">
+                    .---. .---.</br>
+                    |///| |///|</br>
+                    |///| |///|</br>
+                    |///| |///|</br>
+                    '---' '---'
+                </div>
+                YOUR SCORE:<span id="player3Score"></span></br>
+                Your bet: <span id="player3Bet"></span><br>
+            </td>
+            <td id="player4" class="playingField" style="display:none;">
+                YOUR CARDS:
+                <div id="player4Cards" class="cardArea">
+                    .---. .---.</br>
+                    |///| |///|</br>
+                    |///| |///|</br>
+                    |///| |///|</br>
+                    '---' '---'
+                </div>
+                YOUR SCORE:<span id="player4Score"></span></br>
+                Your bet: <span id="player4Bet"></span><br>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+{% endblock %}
