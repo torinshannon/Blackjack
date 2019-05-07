@@ -142,6 +142,7 @@ def logout():
 
 
 @app.route('/viewprofile', methods=["GET"])
+@login_required
 def viewprof():
     curremail = Profile.query.filter_by(id=current_user.id).first().email
     currfname = Profile.query.filter_by(id=current_user.id).first().firstname
@@ -152,24 +153,28 @@ def viewprof():
 
 
 @app.route('/roombrowser', methods=["GET"])
+@login_required
 def tb():
     rooms = Room.query.all()
     return render_template('roombrowser.html', rooms=rooms)
 
 
 @app.route('/gameroom/<id>', methods=["GET"])  # will include /<id> to specify room
+@login_required
 def gameroom(id):
     cash = getCash()
     return render_template('GameRoom.html', cash=cash, id=id)
 
 
 @app.route('/singleplayer', methods=["GET"])
+@login_required
 def singleplayer():
     cash = getCash()
     return render_template('singleplayer.html', cash=cash, )
 
 
 @app.route('/getCard', methods=["GET"])
+@login_required
 def getCard():
     deck = Deck.query.filter_by(id=1).first()
     if deck.cardcount == 0:
@@ -193,23 +198,27 @@ def recycleDeck(deckid):
 
 
 @app.route('/getCardcount/<deckid>', methods=["GET"])
+@login_required
 def getCardcount(deckid):
     deck = Deck.query.filter_by(id=deckid).first()
     return str(deck.cardcount)
 
 
 @app.route('/resetHand', methods=["GET"])
+@login_required
 def resethand():
     return 0
 
 
 @app.route('/getGameState', methods=["GET"])
+@login_required
 def getgamestate():
     user = User.query.filter_by(id=current_user.get_id()).first()
     return user.gameState
 
 
 @app.route('/setGameState/<num>', methods=["GET"])
+@login_required
 def setgamestate(num):
     user = User.query.filter_by(id=current_user.get_id()).first()
     user.gameState = num
@@ -217,12 +226,14 @@ def setgamestate(num):
 
 
 @app.route('/getCash', methods=["GET"])
+@login_required
 def getCash():
     currcash = Profile.query.filter_by(id=current_user.get_id()).first().cash
     return str(currcash)
 
 
 @app.route('/takeCash/<amount>', methods=["GET"])
+@login_required
 def takeCash(amount):
     prof = Profile.query.filter_by(id=current_user.get_id()).first()
     if prof.cash < int(amount):
@@ -233,6 +244,7 @@ def takeCash(amount):
 
 
 @app.route('/giveCash/<amount>', methods=["GET"])
+@login_required
 def giveCash(amount):
     prof = Profile.query.filter_by(id=current_user.get_id()).first()
     prof.cash = prof.cash + int(amount)

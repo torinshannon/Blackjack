@@ -50,6 +50,8 @@ function playDealer() {
 function dealToDealer() {
     console.log("dealer hits");
     dealer.addCard(pullCard());
+    document.getElementById("dealerscore").innerHTML = dealer.getScore();
+    document.getElementById("dealercards").innerHTML = AnimateCard(dealer.hand, false);
     playDealer();
 }
 
