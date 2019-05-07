@@ -108,7 +108,7 @@ def createuser():
         db.session.commit()
         login_user(user)
         flash("Creation successful!")
-        return redirect('/tablebrowser')
+        return redirect('/')
     else:
         return render_template('createuser.html')
 
