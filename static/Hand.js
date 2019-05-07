@@ -21,6 +21,7 @@ function clearHand() {
 
 function playerHit() {
     console.log("Player Hit...");
+    document.getElementById("ddbutton").style.display = "none";
     var n, p;
     n = ctrPlayer;
     players[n].addCard(pullCard());
